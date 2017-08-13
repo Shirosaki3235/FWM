@@ -17,6 +17,7 @@ public class FwmEnumToolMaterial{
 
 	// 防具
 	public static final ArmorMaterial magic_robe = EnumHelper.addArmorMaterial("MagicRobe",150 , new int[] {1, 1, 1, 1}, 10);
+	public static final ArmorMaterial magic_armors = EnumHelper.addArmorMaterial("magic armor", 33, new int[] { 3, 8, 6, 3 }, 10);
 
 	// 道具
 

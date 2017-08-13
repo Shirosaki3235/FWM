@@ -7,5 +7,6 @@ public class RegisterOre{
 	public RegisterOre(){
 		// 鉱石生成
 		GameRegistry.registerWorldGenerator(new crystal_generator(), 0);
+		//GameRegistry.registerWorldGenerator(new magic_wood_generator(), 0);
 	}
 }

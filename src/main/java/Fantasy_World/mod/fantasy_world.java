@@ -1,17 +1,22 @@
 package Fantasy_World.mod;
 
-import net.minecraft.item.Item;
+import Fantasy_World.mod.api.armors;
 import Fantasy_World.mod.api.blocks;
+import Fantasy_World.mod.api.dimensions;
+import Fantasy_World.mod.api.foods;
 import Fantasy_World.mod.api.items;
 import Fantasy_World.mod.api.weapons;
 import Fantasy_World.mod.blocks.FwmBlocks;
 import Fantasy_World.mod.creativetabs.creativetabs;
+import Fantasy_World.mod.dimensions.dimension_core;
 import Fantasy_World.mod.entity.magicentity.magic_rod_entity;
 import Fantasy_World.mod.enums.FwmEnumToolMaterial;
+import Fantasy_World.mod.item.FwmArmors;
 import Fantasy_World.mod.item.FwmFood;
 import Fantasy_World.mod.item.FwmItem;
 import Fantasy_World.mod.recipe.BlockRecipe;
 import Fantasy_World.mod.recipe.ItemRecipe;
+import Fantasy_World.mod.recipe.WeaponRecipe;
 import Fantasy_World.mod.register.RegisterBlocks;
 import Fantasy_World.mod.register.RegisterItems;
 import Fantasy_World.mod.register.RegisterOre;
@@ -36,7 +41,9 @@ public class fantasy_world {
 
 	public static weapons weapons;
 
-	public static Item foods;
+	public static foods foods;
+
+	public static armors armors;
 
 	public static FwmEnumToolMaterial FwmToolMaterial;
 
@@ -46,6 +53,7 @@ public class fantasy_world {
 
 	public static creativetabs Tabs;
 
+	public static dimensions dimensions;
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
@@ -56,15 +64,17 @@ public class fantasy_world {
 
 		// アイテムの追加
 		new FwmItem();
-
 		new FwmFood();
-
+		new FwmArmors();
 		//new blocks();
 
 		//weapons = new weapons();
 
 		// アイテム登録
 		new RegisterItems();
+
+		// ディメンション追加
+		new dimension_core();
 
 	}
 	// ブロックの設定
@@ -89,6 +99,7 @@ public class fantasy_world {
 		new BlockRecipe();
 
 		// 武器レシピの追加
+		new WeaponRecipe();
 
 		// 防具レシピの追加
 
@@ -96,8 +107,8 @@ public class fantasy_world {
 		new RegisterOre();
 
 		// entity
-		int idFlame = 1;
-		EntityRegistry.registerModEntity(magic_rod_entity.class, "dcsflame.entity_flame", idFlame, this, 128, 5, true);
+		int NullmagicID = 1;
+		EntityRegistry.registerModEntity(magic_rod_entity.class, "dcsflame.entity_flame", NullmagicID, this, 128, 5, true);
 
 		// render
 		//proxy.registerRenderers();

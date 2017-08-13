@@ -1,5 +1,7 @@
 package Fantasy_World.mod.item.base;
 
+import java.util.List;
+
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
@@ -11,12 +13,8 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import Fantasy_World.mod.entity.magicentity.magic_rod_entity;
-
-import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-
 
 public class ItemMagicRod extends Item{
 	private IIcon itemIcon;
@@ -26,13 +24,13 @@ public class ItemMagicRod extends Item{
 		this.setMaxDamage(4);
 		this.setNoRepair();
 	}
-	/*
+/*
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister par1IconRegister) {
 		this.itemIcon = par1IconRegister.registerIcon("fantasy_world:magic_rod");
-	}*/
-
+	}
+*/
 	@Override
 	@SideOnly(Side.CLIENT)
 	public boolean isFull3D() {
@@ -96,7 +94,8 @@ public class ItemMagicRod extends Item{
 					bullet.setAdvFire(true);
 				}
 				// Entityの着火機能を利用
-				bullet.setFire(100);
+				bullet.setAir(100);
+				//bullet.setFire(100);
 				// Entityのスポーン処理はisRemote判定を利用してサーバー側のみで行うこと!
 				if (!par2World.isRemote) {
 					par2World.spawnEntityInWorld(bullet);

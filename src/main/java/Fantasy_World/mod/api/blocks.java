@@ -8,4 +8,11 @@ public class blocks{
 	// crystal_oreの宣言
 	public static Block crystal_ore;
 
+	// 木
+	public static Block magic_wood_sapling;
+	public static Block magic_wood_log;
+	public static Block magic_wood_leaves;
+
+	// 作物
+	public static Block herb_corp;
 }
