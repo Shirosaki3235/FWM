@@ -14,6 +14,7 @@ import Fantasy_World.mod.enums.FwmEnumToolMaterial;
 import Fantasy_World.mod.item.FwmArmors;
 import Fantasy_World.mod.item.FwmFood;
 import Fantasy_World.mod.item.FwmItem;
+import Fantasy_World.mod.recipe.ArmorRecipe;
 import Fantasy_World.mod.recipe.BlockRecipe;
 import Fantasy_World.mod.recipe.ItemRecipe;
 import Fantasy_World.mod.recipe.WeaponRecipe;
@@ -102,6 +103,7 @@ public class fantasy_world {
 		new WeaponRecipe();
 
 		// 防具レシピの追加
+		new ArmorRecipe();
 
 		// 鉱石生成
 		new RegisterOre();
