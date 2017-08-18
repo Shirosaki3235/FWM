@@ -229,7 +229,7 @@ public class herb_corp_block extends BlockCrops implements IPlantable, IGrowable
 	@Override
 	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
 		// 未成長なら種を、完全成長していたら作物が追加される。
-		ArrayList<ItemStack> ret = new ArrayList<>();
+		ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
 		int count = quantityDropped(metadata, fortune, world.rand);
 		for (int i = 0; i < count; i++) {
 			Item item = getItemDropped(metadata, world.rand, fortune);

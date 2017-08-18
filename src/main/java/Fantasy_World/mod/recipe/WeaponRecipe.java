@@ -9,25 +9,25 @@ public class WeaponRecipe{
 	public WeaponRecipe(){
 		// crystal block
 		GameRegistry.addRecipe(new ItemStack(fantasy_world.weapons.crystal_sword, 1),
-				" X ",
-				" X ",
-				" Y ",
+				"X",
+				"X",
+				"Y",
 				'X', fantasy_world.items.crystal,
 				'Y', Items.stick);
 
 		// 魔法の杖
 		GameRegistry.addRecipe(new ItemStack(fantasy_world.weapons.magic_rod, 1),
-				" X ",
+				"XZX",
 				" Y ",
 				" Y ",
 				'X', fantasy_world.items.crystal,
-				'Y', fantasy_world.items.rod_stick);
+				'Y', fantasy_world.items.rod_stick,
+				'Z', fantasy_world.items.normal_element);
 
 		// 短剣
-		GameRegistry.addRecipe(new ItemStack(fantasy_world.weapons.magic_rod, 1),
-				" X ",
-				" Y ",
-				"   ",
+		GameRegistry.addRecipe(new ItemStack(fantasy_world.weapons.short_sword, 1),
+				"X",
+				"Y",
 				'X', Items.iron_ingot,
 				'Y', Items.stick);
 	}

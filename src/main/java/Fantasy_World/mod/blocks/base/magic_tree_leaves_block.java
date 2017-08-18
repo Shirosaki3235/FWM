@@ -214,7 +214,7 @@ public class magic_tree_leaves_block extends BlockLeaves implements IShearable{
 
 	@Override
 	public boolean isOpaqueCube() {
-		return !isFancy;
+		return false;
 	}
 
 	@Override

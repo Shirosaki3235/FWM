@@ -10,7 +10,6 @@ public class ArmorRecipe{
 		GameRegistry.addRecipe(new ItemStack(fantasy_world.armors.magic_armor_helmet, 1),
 				"YXY",
 				"X X",
-				"   ",
 				'Y', fantasy_world.items.normal_element,
 				'X', Items.iron_ingot);
 		GameRegistry.addRecipe(new ItemStack(fantasy_world.armors.magic_armor_chest, 1),
@@ -27,7 +26,6 @@ public class ArmorRecipe{
 				'X', Items.iron_ingot);
 		GameRegistry.addRecipe(new ItemStack(fantasy_world.armors.magic_armor_boots, 1),
 				"Y Y",
-				"X X",
 				"X X",
 				'Y', fantasy_world.items.normal_element,
 				'X', Items.iron_ingot);

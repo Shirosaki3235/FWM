@@ -1,7 +1,5 @@
 package Fantasy_World.mod.dimensions.magic_forest;
 
-import static net.minecraft.world.biome.BiomeGenBase.*;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -15,6 +13,7 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.IntCache;
+import Fantasy_World.mod.fantasy_world;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -26,16 +25,16 @@ public class magic_forest_chunkmanager extends WorldChunkManager{
     private List biomesToSpawnIn;
 
     // 独自ディメンションにはメサとキノコバイオームのみ
-    private static ArrayList<BiomeGenBase> allowedBiomes = new ArrayList<BiomeGenBase>(Arrays.asList(mushroomIsland, mesa));
+    private static ArrayList<BiomeGenBase> allowedBiomes = new ArrayList<BiomeGenBase>(Arrays.asList(fantasy_world.biome.magic_forest, fantasy_world.biome.magic_forest));
 
     public static final BiomeGenBase[] biomeList = new BiomeGenBase[256];
 
     static {
         for (int i = 0; i < 256; ++i) {
             if (i % 2 == 0) {
-                biomeList[i] = mushroomIsland;
+                biomeList[i] = fantasy_world.biome.magic_forest;
             } else if (i % 2 == 1) {
-                biomeList[i] = mesa;
+                biomeList[i] = fantasy_world.biome.magic_forest;
             }
         }
     }

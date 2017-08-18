@@ -131,5 +131,23 @@ public class ItemRecipe{
 				'Y', Items.ender_pearl,
 				'X', fantasy_world.items.normal_element,
 				'Z', fantasy_world.items.crystal);
+
+		// バニラアイテム
+		// 木の棒
+		GameRegistry.addRecipe(new ItemStack(Items.stick, 4),
+				"Y",
+				"Y",
+				'Y', fantasy_world.blocks.magic_wood_block);
+
+
+
+
+
+
+
+
+
+
+
 	}
 }

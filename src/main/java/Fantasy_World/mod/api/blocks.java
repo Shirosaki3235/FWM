@@ -12,6 +12,7 @@ public class blocks{
 	public static Block magic_wood_sapling;
 	public static Block magic_wood_log;
 	public static Block magic_wood_leaves;
+	public static Block magic_wood_block;
 
 	// 作物
 	public static Block herb_corp;

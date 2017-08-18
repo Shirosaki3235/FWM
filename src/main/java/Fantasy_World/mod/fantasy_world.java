@@ -1,11 +1,13 @@
 package Fantasy_World.mod;
 
 import Fantasy_World.mod.api.armors;
+import Fantasy_World.mod.api.biome;
 import Fantasy_World.mod.api.blocks;
 import Fantasy_World.mod.api.dimensions;
 import Fantasy_World.mod.api.foods;
 import Fantasy_World.mod.api.items;
 import Fantasy_World.mod.api.weapons;
+import Fantasy_World.mod.biome.biome_base;
 import Fantasy_World.mod.blocks.FwmBlocks;
 import Fantasy_World.mod.creativetabs.creativetabs;
 import Fantasy_World.mod.dimensions.dimension_core;
@@ -38,14 +40,13 @@ public class fantasy_world {
 	// 追加するアイテムの宣言
 	// 複数追加も可
 
+	// アイテム、武器、食料、鎧
 	public static items items;
-
 	public static weapons weapons;
-
 	public static foods foods;
-
 	public static armors armors;
 
+	// マテリアル
 	public static FwmEnumToolMaterial FwmToolMaterial;
 
 	//public static RegisterItems RegisterItems;
@@ -55,6 +56,10 @@ public class fantasy_world {
 	public static creativetabs Tabs;
 
 	public static dimensions dimensions;
+
+	public static biome biome;
+
+	public static biome_base biome_base;
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
@@ -67,9 +72,7 @@ public class fantasy_world {
 		new FwmItem();
 		new FwmFood();
 		new FwmArmors();
-		//new blocks();
-
-		//weapons = new weapons();
+		//new FwmWepons();
 
 		// アイテム登録
 		new RegisterItems();
@@ -111,6 +114,9 @@ public class fantasy_world {
 		// entity
 		int NullmagicID = 1;
 		EntityRegistry.registerModEntity(magic_rod_entity.class, "dcsflame.entity_flame", NullmagicID, this, 128, 5, true);
+
+		//バイオームの追加
+		new biome_base();
 
 		// render
 		//proxy.registerRenderers();

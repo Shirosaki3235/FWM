@@ -295,7 +295,7 @@ public class magic_forest_teleporter extends Teleporter{
 	        int j = MathHelper.floor_double(par1Entity.posY);
 	        int k = MathHelper.floor_double(par1Entity.posZ);
 
-	        Block blc = newDimID == 0 ? Blocks.netherrack : fantasy_world.dimensions.portal;
+	        Block blc = newDimID == 0 ? Blocks.stonebrick : Blocks.stonebrick;
 
 
 	        for(int y = -1; y <= 3; y++)
@@ -317,7 +317,7 @@ public class magic_forest_teleporter extends Teleporter{
 	            {
 	            	if(z == 0 && (x >= -1 && x <= 2))
 	            	{
-	            		this.worldServerInstance.setBlock(i + x, j + y, k + z, Blocks.netherrack, 0, 2);
+	            		this.worldServerInstance.setBlock(i + x, j + y, k + z, fantasy_world.dimensions.portal, 0, 2);
 	            	}else
 	            	{
 	            		this.worldServerInstance.setBlock(i + x, j + y, k + z, blc, 0, 2);
@@ -325,8 +325,8 @@ public class magic_forest_teleporter extends Teleporter{
 	            }
 	        }
 	        y = 0;
-	        this.worldServerInstance.setBlock(i - 1, j + y, k, fantasy_world.dimensions.portal, 0, 2);
-	        this.worldServerInstance.setBlock(i + 2, j + y, k, fantasy_world.dimensions.portal, 0, 2);
+	        this.worldServerInstance.setBlock(i - 1, j + y, k, Blocks.stonebrick, 0, 2);
+	        this.worldServerInstance.setBlock(i + 2, j + y, k, Blocks.stonebrick, 0, 2);
 
 	        y = 1;
 	        this.worldServerInstance.setBlock(i - 1, j + y, k, Blocks.air, 0, 2);
@@ -373,7 +373,22 @@ public class magic_forest_teleporter extends Teleporter{
 	        return true;
 	    }
 
+	    public boolean makePortal2(Entity par1Entity)
+	    {
+	    	//System.out.println("ファイル名A:" + this.dimIdx + "/" + this.worldServerInstance.getWorldInfo().getDimension());
+	    	//System.out.println("ファイル名B:" + par1Entity.posX + "/" + par1Entity.posY + "/" + par1Entity.posZ);
+	        byte b0 = 16;
+	        double d0 = -1.0D;
+	        int i = MathHelper.floor_double(par1Entity.posX);
+	        int j = MathHelper.floor_double(par1Entity.posY);
+	        int k = MathHelper.floor_double(par1Entity.posZ);
 
+
+	        magic_forest_gen_gethouse gatehouse = new magic_forest_gen_gethouse();
+	        gatehouse.generate(i, j, k, this.worldServerInstance, this.dimIdx);
+
+	        return true;
+	    }
 
 		@Override
 		public void removeStalePortalLocations(long time)

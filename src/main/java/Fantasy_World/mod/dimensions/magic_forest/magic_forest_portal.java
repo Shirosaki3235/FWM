@@ -40,8 +40,9 @@ public class magic_forest_portal extends Block{
 				ServerConfigurationManager serverConfigurationManager = entityPlayerMP.mcServer.getConfigurationManager();
 				WorldServer worldServer = entityPlayerMP.mcServer.worldServerForDimension(0);
 
-				entityPlayerMP.setInPortal();
 				entityPlayerMP.timeUntilPortal = 10;
+				entityPlayerMP.setInPortal();
+
 
 				// 独自ディメンションからはオーバーワールドに移動
 				serverConfigurationManager.transferPlayerToDimension(entityPlayerMP, 0,new magic_forest_teleporter(worldServer, fantasy_world.dimensions.dimensionID, 0));

@@ -8,11 +8,11 @@ import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.Direction;
 import net.minecraft.world.World;
-import net.minecraft.world.gen.feature.WorldGenAbstractTree;
+import net.minecraft.world.gen.feature.WorldGenBigTree;
 import net.minecraftforge.common.util.ForgeDirection;
 import Fantasy_World.mod.fantasy_world;
 
-public class magic_wood_generator extends WorldGenAbstractTree {
+public class magic_wood_generator extends WorldGenBigTree {
 
 	private final int minTreeHeight;
 	private final boolean vinesGrow;

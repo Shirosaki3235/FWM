@@ -17,6 +17,7 @@ public class RegisterBlocks{
 		GameRegistry.registerBlock(fantasy_world.blocks.magic_wood_sapling, "magic_wood_sapling");
 		GameRegistry.registerBlock(fantasy_world.blocks.magic_wood_log, "magic_wood_log");
 		GameRegistry.registerBlock(fantasy_world.blocks.magic_wood_leaves, magic_tree_leaves_item.class, "magic_wood_leaves");
+		GameRegistry.registerBlock(fantasy_world.blocks.magic_wood_block, "magic_wood_block");
 
 		// 木生成
 		OreDictionary.registerOre("magic_wood_sapling", fantasy_world.blocks.magic_wood_sapling);
