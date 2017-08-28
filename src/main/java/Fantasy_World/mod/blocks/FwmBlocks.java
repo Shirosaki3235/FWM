@@ -5,6 +5,8 @@ import Fantasy_World.mod.fantasy_world;
 import Fantasy_World.mod.blocks.base.c_ore;
 import Fantasy_World.mod.blocks.base.fantasy_world_block;
 import Fantasy_World.mod.blocks.base.herb_corp_block;
+import Fantasy_World.mod.blocks.base.magic_dirt_block;
+import Fantasy_World.mod.blocks.base.magic_grass_block;
 import Fantasy_World.mod.blocks.base.magic_log_block;
 import Fantasy_World.mod.blocks.base.magic_sapling_block;
 import Fantasy_World.mod.blocks.base.magic_tree_leaves_block;
@@ -26,5 +28,9 @@ public class FwmBlocks{
 
 		// 作物
 		fantasy_world.blocks.herb_corp = new herb_corp_block().setBlockName("herb_corp").setBlockTextureName("fantasy_world:herb_corp");
+
+		// バイオームブロック
+		fantasy_world.blocks.magic_dirt = new magic_dirt_block(Material.grass).setCreativeTab(fantasy_world.Tabs.BlockTabs).setBlockName("magic_dirt").setBlockTextureName("fantasy_world:magic_dirt");
+		fantasy_world.blocks.magic_grass = new magic_grass_block(Material.grass).setCreativeTab(fantasy_world.Tabs.BlockTabs).setBlockName("magic_grass").setBlockTextureName("fantasy_world:magic_grass");
 	}
 }

@@ -8,11 +8,11 @@ import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.Direction;
 import net.minecraft.world.World;
-import net.minecraft.world.gen.feature.WorldGenBigTree;
+import net.minecraft.world.gen.feature.WorldGenTrees;
 import net.minecraftforge.common.util.ForgeDirection;
 import Fantasy_World.mod.fantasy_world;
 
-public class magic_wood_generator extends WorldGenBigTree {
+public class magic_wood_generator extends WorldGenTrees {
 
 	private final int minTreeHeight;
 	private final boolean vinesGrow;
@@ -62,7 +62,7 @@ public class magic_wood_generator extends WorldGenBigTree {
 				}
 			}
 		}
-
+//fantasy_world.blocks.magic_wood_sapling
 		Block block2 = world.getBlock(x, y - 1, z);
 
 		boolean isSoil = block2.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, (BlockSapling) fantasy_world.blocks.magic_wood_sapling);
@@ -171,7 +171,7 @@ public class magic_wood_generator extends WorldGenBigTree {
 		Block block = world.getBlock(x, y, z);
 		return block.isAir(world, x, y, z) || block.isLeaves(world, x, y, z) || block.isWood(world, x, y, z) || this.func_150523_a(block);
 	}
-
+/*|| block == fantasy_world.blocks.magic_dirt*/
 	@Override
 	protected boolean func_150523_a(Block block) {
 		return block.getMaterial() == Material.air || block.getMaterial() == Material.leaves || block == Blocks.grass || block == Blocks.dirt || block == Blocks.log || block == Blocks.log2 || block == Blocks.sapling || block == Blocks.vine;

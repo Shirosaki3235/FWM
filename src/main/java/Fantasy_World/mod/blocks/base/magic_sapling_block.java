@@ -26,7 +26,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class magic_sapling_block extends BlockSapling implements IPlantable, IGrowable{
-	private static final EnumPlantType Plains = null;
+	private static final EnumPlantType Plains = EnumPlantType.Plains;
 
 	public magic_sapling_block(){
 		super();
@@ -47,7 +47,7 @@ public class magic_sapling_block extends BlockSapling implements IPlantable, IGr
 	@Override
 	protected boolean canPlaceBlockOn(Block block) {
 		// 草、土、耕された土ならtrueを返す。
-		return block == Blocks.grass || block == Blocks.dirt || block == Blocks.farmland;
+		return block == Blocks.grass || block == Blocks.dirt || block == Blocks.farmland || block == fantasy_world.blocks.magic_dirt;
 	}
 
 	@Override

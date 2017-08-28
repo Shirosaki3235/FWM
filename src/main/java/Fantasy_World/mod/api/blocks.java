@@ -16,4 +16,8 @@ public class blocks{
 
 	// 作物
 	public static Block herb_corp;
+
+	// バイオームブロック
+	public static Block magic_dirt;
+	public static Block magic_grass;
 }

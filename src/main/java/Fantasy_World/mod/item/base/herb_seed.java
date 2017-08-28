@@ -28,16 +28,21 @@ public class herb_seed extends ItemSeeds implements IPlantable {
 	/** アイテムを使用した時の処理。 */
 	@Override
 	public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
-		if (side != 1) {
-			return false;
-		} else if (player.canPlayerEdit(x, y, z, side, itemStack) && player.canPlayerEdit(x, y + 1, z, side, itemStack)) {
-			// 上からの使用で、プレイヤーが編集可能で、右クリックしたブロックが耕地であり、その上が空気の時。
-			if (world.getBlock(x, y, z).canSustainPlant(world, x, y, z, ForgeDirection.UP, this) && world.isAirBlock(x, y + 1, z)) {
-				// 作物を設置する。
-				world.setBlock(x, y + 1, z, this.field_150925_a);
-				// スタック数を減らす。
-				--itemStack.stackSize;
-				return true;
+		if(!player.isSneaking()){
+			if (side != 1) {
+				return false;
+			} else if (player.canPlayerEdit(x, y, z, side, itemStack) && player.canPlayerEdit(x, y + 1, z, side, itemStack)) {
+				Block soil = world.getBlock(x, y, z);
+				// 上からの使用で、プレイヤーが編集可能で、右クリックしたブロックが耕地であり、その上が空気の時。
+				if (soil != null && soil.canSustainPlant(world, x, y, z, ForgeDirection.UP, this) && world.isAirBlock(x, y + 1, z)) {
+					// 作物を設置する。.field_150925_a
+					world.setBlock(x, y + 1, z, this.field_150925_a);
+					// スタック数を減らす。
+					--itemStack.stackSize;
+					return true;
+				} else {
+					return false;
+				}
 			} else {
 				return false;
 			}

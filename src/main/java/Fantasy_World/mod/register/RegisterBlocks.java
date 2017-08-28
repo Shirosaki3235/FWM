@@ -26,5 +26,9 @@ public class RegisterBlocks{
 
 		// 作物
 		GameRegistry.registerBlock(fantasy_world.blocks.herb_corp, "herb_corp");
+
+		// バイオームブロック
+		GameRegistry.registerBlock(fantasy_world.blocks.magic_dirt, "magic_dirt");
+		GameRegistry.registerBlock(fantasy_world.blocks.magic_grass, "magic_grass");
 	}
 }
