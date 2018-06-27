@@ -13,6 +13,7 @@ public class RegisterItems{
 		// 剣
 		GameRegistry.registerItem(fantasy_world.weapons.short_sword, "short_sword");
 		GameRegistry.registerItem(fantasy_world.weapons.crystal_sword, "fantasy_world.FwmItem.crystal_sword");
+		GameRegistry.registerItem(fantasy_world.weapons.magic_wooden_sword, "fantasy_world.FwmItem.magic_wooden_sword");
 
 		// 防具
 		GameRegistry.registerItem(fantasy_world.armors.magic_armor_helmet, "magic_armor_helmet");
@@ -45,6 +46,10 @@ public class RegisterItems{
 		GameRegistry.registerItem(fantasy_world.foods.fast_drag, "fast_drag");
 		GameRegistry.registerItem(fantasy_world.foods.herb_seed, "herb_seed");
 		GameRegistry.registerItem(fantasy_world.foods.herb_laef, "herb_laef");
+
+		// 召喚石
+		GameRegistry.registerItem(fantasy_world.items.aoi_spawn_stone, "aoi_spawn_stone");
+		GameRegistry.registerItem(fantasy_world.items.seyana_spawn_slime_ball, "seyana_spawn_slime_ball");
 
 	}
 }

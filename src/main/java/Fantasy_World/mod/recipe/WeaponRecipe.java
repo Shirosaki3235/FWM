@@ -30,5 +30,13 @@ public class WeaponRecipe{
 				"Y",
 				'X', Items.iron_ingot,
 				'Y', Items.stick);
+
+		// 木の剣
+		GameRegistry.addRecipe(new ItemStack(fantasy_world.weapons.magic_wooden_sword, 1),
+				"X",
+				"X",
+				"Y",
+				'X', fantasy_world.blocks.magic_wood_block,
+				'Y', Items.stick);
 	}
 }

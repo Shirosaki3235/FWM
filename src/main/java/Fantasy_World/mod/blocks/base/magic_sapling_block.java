@@ -47,7 +47,7 @@ public class magic_sapling_block extends BlockSapling implements IPlantable, IGr
 	@Override
 	protected boolean canPlaceBlockOn(Block block) {
 		// 草、土、耕された土ならtrueを返す。
-		return block == Blocks.grass || block == Blocks.dirt || block == Blocks.farmland || block == fantasy_world.blocks.magic_dirt;
+		return block == Blocks.grass || block == Blocks.dirt || block == Blocks.farmland || block == fantasy_world.blocks.magic_dirt || block == fantasy_world.blocks.magic_grass;
 	}
 
 	@Override

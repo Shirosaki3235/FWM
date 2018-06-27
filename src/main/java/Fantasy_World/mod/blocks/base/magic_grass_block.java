@@ -3,24 +3,28 @@ package Fantasy_World.mod.blocks.base;
 import java.util.Random;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.IPlantable;
+import net.minecraftforge.common.util.ForgeDirection;
 import Fantasy_World.mod.fantasy_world;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class magic_grass_block extends Block {
+public class magic_grass_block extends Block implements IGrowable {
 
     @SideOnly(Side.CLIENT)
 	private static IIcon[] iicon = new IIcon[4];
     //private static final String __OBFID = "CL_00000251";
 
-	public magic_grass_block(Material material) {
-		super(material);
+	public magic_grass_block(Material grass) {
+		super(grass);
 		//硬さの設定
 		this.setHardness(2.0F);
 		//爆破耐性の設定
@@ -68,9 +72,10 @@ public class magic_grass_block extends Block {
                     int i1 = p_149674_2_ + p_149674_5_.nextInt(3) - 1;
                     int j1 = p_149674_3_ + p_149674_5_.nextInt(5) - 3;
                     int k1 = p_149674_4_ + p_149674_5_.nextInt(3) - 1;
-                    Block block = p_149674_1_.getBlock(i1, j1 + 1, k1);
+                    Block block1 = p_149674_1_.getBlock(i1, j1 + 1, k1);
+                    int block2 = p_149674_1_.getBlockMetadata(i1, j1, k1);
 
-                    if (p_149674_1_.getBlock(i1, j1, k1) == fantasy_world.blocks.magic_dirt && p_149674_1_.getBlockMetadata(i1, j1, k1) == 0 && p_149674_1_.getBlockLightValue(i1, j1 + 1, k1) >= 4 && p_149674_1_.getBlockLightOpacity(i1, j1 + 1, k1) <= 2)
+                    if (p_149674_1_.isAirBlock(p_149674_2_, p_149674_3_ + 1, p_149674_4_) && p_149674_1_.getBlock(i1, j1, k1) == fantasy_world.blocks.magic_dirt && p_149674_1_.getBlockMetadata(i1, j1, k1) == 0 && p_149674_1_.getBlockLightValue(i1, j1 + 1, k1) >= 4 && p_149674_1_.getBlockLightOpacity(i1, j1 + 1, k1) <= 2)
                     {
                         p_149674_1_.setBlock(i1, j1, k1, fantasy_world.blocks.magic_grass);
                     }
@@ -137,4 +142,56 @@ public class magic_grass_block extends Block {
     {
         return iicon[3];
     }
+
+	 public boolean canSustainPlant(World world, int x, int y, int z, ForgeDirection direction, IPlantable plant)
+    {
+    	return true;
+    }
+
+	@Override
+	public void func_149853_b(World p_149853_1_, Random p_149853_2_, int p_149853_3_, int p_149853_4_, int p_149853_5_) {
+		// TODO 自動生成されたメソッド・スタブ
+		int l = 0;
+
+        while (l < 128)
+        {
+            int i1 = p_149853_3_;
+            int j1 = p_149853_4_ + 1;
+            int k1 = p_149853_5_;
+            int l1 = 0;
+
+            while (true)
+            {
+                if (l1 < l / 16)
+                {
+                    i1 += p_149853_2_.nextInt(3) - 1;
+                    j1 += (p_149853_2_.nextInt(3) - 1) * p_149853_2_.nextInt(3) / 2;
+                    k1 += p_149853_2_.nextInt(3) - 1;
+
+                    if (p_149853_1_.getBlock(i1, j1 - 1, k1) == Blocks.grass && !p_149853_1_.getBlock(i1, j1, k1).isNormalCube())
+                    {
+                        ++l1;
+                        continue;
+                    }
+                }
+                else if (p_149853_1_.getBlock(i1, j1, k1).getMaterial() == Material.air)
+                {
+                    if (p_149853_2_.nextInt(8) != 0)
+                    {
+                        if (Blocks.tallgrass.canBlockStay(p_149853_1_, i1, j1, k1))
+                        {
+                            p_149853_1_.setBlock(i1, j1, k1, Blocks.tallgrass, 1, 3);
+                        }
+                    }
+                    else
+                    {
+                        p_149853_1_.getBiomeGenForCoords(i1, k1).plantFlower(p_149853_1_, p_149853_2_, i1, j1, k1);
+                    }
+                }
+
+                ++l;
+                break;
+            }
+        }
+	}
 }

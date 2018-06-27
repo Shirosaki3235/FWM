@@ -30,7 +30,10 @@ public class FwmBlocks{
 		fantasy_world.blocks.herb_corp = new herb_corp_block().setBlockName("herb_corp").setBlockTextureName("fantasy_world:herb_corp");
 
 		// バイオームブロック
-		fantasy_world.blocks.magic_dirt = new magic_dirt_block(Material.grass).setCreativeTab(fantasy_world.Tabs.BlockTabs).setBlockName("magic_dirt").setBlockTextureName("fantasy_world:magic_dirt");
+		fantasy_world.blocks.magic_dirt = new magic_dirt_block(Material.ground).setCreativeTab(fantasy_world.Tabs.BlockTabs).setBlockName("magic_dirt").setBlockTextureName("fantasy_world:magic_dirt");
 		fantasy_world.blocks.magic_grass = new magic_grass_block(Material.grass).setCreativeTab(fantasy_world.Tabs.BlockTabs).setBlockName("magic_grass").setBlockTextureName("fantasy_world:magic_grass");
 	}
 }
+
+//fantasy_world.blocks.magic_grass
+//fantasy_world.blocks.magic_dirt

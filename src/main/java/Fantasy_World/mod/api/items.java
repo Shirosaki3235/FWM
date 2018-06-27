@@ -9,7 +9,8 @@ public class items{
 	public static Item crystal_stone;	// クリスタルストーン
 	public static Item rod_stick;		// 杖の棒
 	public static Item crystal_dust;	// クリスタルの粉
-	public static Item magic_leaf;
+	public static Item magic_leaf;		// 魔法の葉
+	//public static Item
 
 	// 六大元素
 	public static Item fire_element;
@@ -26,4 +27,8 @@ public class items{
 
 	// 木
 
+
+	// 召喚石
+	public static Item aoi_spawn_stone;
+	public static Item seyana_spawn_slime_ball;
 }

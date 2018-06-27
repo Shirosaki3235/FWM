@@ -52,7 +52,7 @@ public class magic_rod_entity extends Entity implements IProjectile{
 	protected int livingTimeCount = 0;
 
 	/* ダメージの大きさ */
-	protected final double damage;
+	protected double damage;
 
 	/* 前進速度 */
 	protected double speed = 1.0D;
@@ -65,6 +65,7 @@ public class magic_rod_entity extends Entity implements IProjectile{
 
 	protected boolean isCorrosion = false;
 	protected boolean isFire = false;
+	private int knockbackStrength;
 
 	public magic_rod_entity(World par1World) {
 		super(par1World);
@@ -84,8 +85,7 @@ public class magic_rod_entity extends Entity implements IProjectile{
 		this.coolTime = thisCoolTime;
 	}
 
-	public magic_rod_entity(World par1World, EntityLivingBase par2EntityLivingBase, float speed, float speed2,
-			double damage, double range, int cool) {
+	public magic_rod_entity(World par1World, EntityLivingBase par2EntityLivingBase, float speed, float speed2, double damage, double range, int cool) {
 		this(par1World, 0.5F, damage, range, cool);
 		this.renderDistanceWeight = 10.0D;
 		this.shootingEntity = par2EntityLivingBase;
@@ -572,5 +572,20 @@ public class magic_rod_entity extends Entity implements IProjectile{
 	/* ダメージソースのタイプ */
 	public DamageSource thisDamageSource(Entity entity) {
 		return isCorrosion ? DamageSource.onFire : DamageSource.lava;
+	}
+
+	public void setDamage(double p_70239_1_) {
+		// TODO 自動生成されたメソッド・スタブ
+		this.damage = p_70239_1_;
+	}
+
+	public double getDamage() {
+		// TODO 自動生成されたメソッド・スタブ
+		return this.damage;
+	}
+
+	public void setKnockbackStrength(int p_70240_1_) {
+		// TODO 自動生成されたメソッド・スタブ
+		this.knockbackStrength = p_70240_1_;
 	}
 }

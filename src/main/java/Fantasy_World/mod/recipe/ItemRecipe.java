@@ -1,8 +1,14 @@
 package Fantasy_World.mod.recipe;
 
+import java.util.Iterator;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.CraftingManager;
+import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.item.crafting.ShapedRecipes;
+import net.minecraft.item.crafting.ShapelessRecipes;
 import Fantasy_World.mod.fantasy_world;
 import cpw.mods.fml.common.IFuelHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -17,6 +23,14 @@ public class ItemRecipe{
 				"XXX",
 				'X', fantasy_world.items.crystal,
 				'Y', Items.redstone);
+
+		// クリスタルストーン
+		GameRegistry.addShapelessRecipe(new ItemStack(fantasy_world.items.crystal_stone, 4),
+				fantasy_world.blocks.crystal_block);
+
+		// クリスタル
+		GameRegistry.addShapelessRecipe(new ItemStack(fantasy_world.items.crystal, 4),
+						fantasy_world.items.crystal_stone);
 
 		// 魔法の棒
 		GameRegistry.addRecipe(new ItemStack(fantasy_world.items.rod_stick, 1),
@@ -46,7 +60,7 @@ public class ItemRecipe{
 		});
 
 		// 最速ヒール
-		GameRegistry.addRecipe(new ItemStack(fantasy_world.foods.fast_drag, 2),
+		GameRegistry.addRecipe(new ItemStack(fantasy_world.foods.fast_drag, 1),
 				" X ",
 				"XYX",
 				"ZXZ",
@@ -59,7 +73,7 @@ public class ItemRecipe{
 				"ZYZ",
 				"YXY",
 				"ZYZ",
-				'Y', Items.blaze_powder,
+				'Y', Items.coal,
 				'X', fantasy_world.items.normal_element,
 				'Z', fantasy_world.items.crystal);
 		GameRegistry.addRecipe(new ItemStack(fantasy_world.items.water_element, 1),
@@ -73,14 +87,14 @@ public class ItemRecipe{
 				"ZYZ",
 				"YXY",
 				"ZYZ",
-				'Y', Blocks.ice,
+				'Y', Blocks.snow,
 				'X', fantasy_world.items.normal_element,
 				'Z', fantasy_world.items.crystal);
 		GameRegistry.addRecipe(new ItemStack(fantasy_world.items.wood_element, 1),
 				"ZYZ",
 				"YXY",
 				"ZYZ",
-				'Y', fantasy_world.items.magic_leaf,
+				'Y', Blocks.leaves,
 				'X', fantasy_world.items.normal_element,
 				'Z', fantasy_world.items.crystal);
 		GameRegistry.addRecipe(new ItemStack(fantasy_world.items.thunder_element, 1),
@@ -121,7 +135,7 @@ public class ItemRecipe{
 				"ZYZ",
 				"YXY",
 				"ZYZ",
-				'Y', Blocks.redstone_torch,
+				'Y', Blocks.torch,
 				'X', fantasy_world.items.normal_element,
 				'Z', fantasy_world.items.crystal);
 		GameRegistry.addRecipe(new ItemStack(fantasy_world.items.dark_element, 1),
@@ -147,7 +161,44 @@ public class ItemRecipe{
 
 
 
-
+		deleteVanillaRecipe();
 
 	}
+
+	// レシピの削除
+	public static void deleteVanillaRecipe() {
+
+        CraftingManager m = CraftingManager.getInstance();
+        ItemStack wool = new ItemStack(Blocks.wool);
+        ItemStack fishing_rod = new ItemStack(Items.fishing_rod);
+        ItemStack wood_sword = new ItemStack(Items.wooden_sword);
+
+        Iterator<IRecipe> i = m.getRecipeList().iterator();
+
+        while (i.hasNext()) {
+
+            IRecipe re = i.next();
+
+            if (re == null) continue;
+            ItemStack outPut = re.getRecipeOutput();
+            if (outPut == null) continue;
+
+            if (outPut.isItemEqual(wool) && re instanceof ShapedRecipes && !(re instanceof ShapelessRecipes)) {
+                i.remove();
+                continue;
+            }
+
+            if (outPut.isItemEqual(fishing_rod)) {
+                i.remove();
+                continue;
+            }
+
+            if (outPut.isItemEqual(wood_sword)) {
+                i.remove();
+                continue;
+            }
+
+        }
+
+    }
 }

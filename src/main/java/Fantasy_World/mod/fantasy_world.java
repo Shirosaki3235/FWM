@@ -11,8 +11,10 @@ import Fantasy_World.mod.biome.biome_base;
 import Fantasy_World.mod.blocks.FwmBlocks;
 import Fantasy_World.mod.creativetabs.creativetabs;
 import Fantasy_World.mod.dimensions.dimension_core;
+import Fantasy_World.mod.entity.entity_core;
 import Fantasy_World.mod.entity.magicentity.magic_rod_entity;
 import Fantasy_World.mod.enums.FwmEnumToolMaterial;
+import Fantasy_World.mod.gui.gui_core;
 import Fantasy_World.mod.item.FwmArmors;
 import Fantasy_World.mod.item.FwmFood;
 import Fantasy_World.mod.item.FwmItem;
@@ -25,11 +27,12 @@ import Fantasy_World.mod.register.RegisterItems;
 import Fantasy_World.mod.register.RegisterOre;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.EntityRegistry;
 
-@Mod(modid = "Fantasy_World_mod", name = "Fantasy World mod", version = "0.0.2")
+@Mod(modid = fantasy_world.modID, name = fantasy_world.name, version = fantasy_world.ver, guiFactory = "Fantasy_World_mod.conf.ModGuiFactory")
 public class fantasy_world {
 /*
 	// プロキシの登録
@@ -37,6 +40,12 @@ public class fantasy_world {
 			serverSide = "fantasy_world.mod.common.CommonProxyF")
 	public static Commons proxy;
 */
+	@Instance("Fantasy_World_mod")
+	public static fantasy_world instance;
+	public static final String modID = "Fantasy_World_mod";
+	public static final String name = "Fantasy World mod";
+	public static final String ver = "0.0.2";
+
 	// 追加するアイテムの宣言
 	// 複数追加も可
 
@@ -51,15 +60,23 @@ public class fantasy_world {
 
 	//public static RegisterItems RegisterItems;
 
+	// ブロック
 	public static blocks blocks;
 
+	// クリエイティブタブ
 	public static creativetabs Tabs;
 
+	// ディメンション
 	public static dimensions dimensions;
 
+	// バイオーム
 	public static biome biome;
 
+	// バイオームベース
 	public static biome_base biome_base;
+
+	// GUI
+	public static Fantasy_World.mod.api.gui gui;
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
@@ -85,19 +102,25 @@ public class fantasy_world {
 	@EventHandler
 	public void perInit(FMLPreInitializationEvent event) {
 
+		// new confing(event);
+
 		// ブロックの追加
 		new FwmBlocks();
 
 		// ブロック登録
 		new RegisterBlocks();
 
+		new gui_core();
 	}
 	// レシピや鉱石生成の設定
 	@EventHandler
 	public void init(FMLInitializationEvent event){
 
+		// new confing(event);
+
 		// アイテムレシピの追加
 		new ItemRecipe();
+		//new deleteVanillaRecipe();
 
 		// ブロックレシピの追加
 		new BlockRecipe();
@@ -111,12 +134,16 @@ public class fantasy_world {
 		// 鉱石生成
 		new RegisterOre();
 
-		// entity
-		int NullmagicID = 1;
-		EntityRegistry.registerModEntity(magic_rod_entity.class, "dcsflame.entity_flame", NullmagicID, this, 128, 5, true);
+
 
 		//バイオームの追加
 		new biome_base();
+
+		// entity
+		int NullmagicID = 1;
+		EntityRegistry.registerModEntity(magic_rod_entity.class, "dcsflame.entity_flame", NullmagicID, this, 128, 5, true);
+		new entity_core();
+
 
 		// render
 		//proxy.registerRenderers();
